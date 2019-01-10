@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, AVAudioPlayerDelegate {
     
+    var audioPlayer : AVAudioPlayer!
+    
+    // Using tags as id in HTML to differentiate evervy button having a same IBAction
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +23,23 @@ class ViewController: UIViewController{
 
     @IBAction func notePressed(_ sender: UIButton) {
         
+        playSound(tag : sender.tag)
         
+    }
+    
+    func playSound(tag : Int) -> Void {
+        let soundURL = Bundle.main.url(forResource: "note\(tag)", withExtension: "wav")
         
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+        }
+        catch {
+            print(error)
+        }
+        
+        // to manually override the do catch statements , use try! audioplayer = AVAudioPlayer(contentsOf: soundURL!)
+        
+        audioPlayer.play()
     }
     
   
