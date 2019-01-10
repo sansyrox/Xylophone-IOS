@@ -1,8 +1,5 @@
-
-![App Brewery Banner](Documentation/AppBreweryBanner.png)
-
 #  Xylophone
 
-## Our Goal
+## Abstract
 
 My first Real IOS App that uses AVFoundation and plays sound on User Input.
